@@ -18,21 +18,21 @@ th, td {
 	<table>
 		<thead>
 			<tr>
-				<th>EmployeeId</th>
+			<!-- 	<th>EmployeeId</th>  -->
 				<th>EmployeeName</th>
-				<th>Salary</th>
-				<th>Language</th>
+			<!-- 	<th>Salary</th>  -->
+			<!-- 	<th>Language</th>  -->
 				<th>Department</th>
-				<th>Edit</th>
+				<th>View</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="employee : ${employees}">
-				<td th:text="${employee.empId}"></td>
+			<!--  	<td th:text="${employee.empId}"></td> -->
 				<td th:text="${employee.empName}"></td>
-				<td th:text="${employee.salary}"></td>
-				<td th:text="${employee.language}"></td>
+			<!-- 	<td th:text="${employee.salary}"></td>  -->
+			<!--  	<td th:text="${employee.language}"></td> -->
 				<td th:text="${employee.department}"></td>
 				<td><a th:href="@{/api/amazon/employee/edit(empId=${employee.empId})}">view</a></td>
 				<td><a th:href="@{/api/amazon/employee/delete(empId=${employee.empId})}">Delete</a></td>
@@ -48,7 +48,7 @@ th, td {
 			Salary <input type="text" id="salary" name="salary" th:value="${employee.salary}"/><br />
 			Language <input type="text" id="language" name="language" th:value="${employee.language}"/><br />
 			Department <input type="text" id="department" name="department" th:value="${employee.department}"/><br />
-			<input type="submit" />
+			<!-- <input type="submit" />  -->
 		</form>
 	</div>
 	<div th:if="${employee == null}">

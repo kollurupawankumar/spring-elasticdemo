@@ -25,3 +25,6 @@ docker run -d -p 5601:5601 -p 9200:9200 -p 5044:5044 -v /var/lib/elasticsearch:/
 docker logs -f elk
 
 
+This code uses embedded Elasticsearch so no need to run the elaticsearch seperately.
+
+
