@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springes.demo.mysql.model.Employee;
-import com.springes.demo.mysql.repo.EmployeeRepository;
+import com.springes.demo.repo.EmployeeRepository;
 
 @Service
 public class EmployeeDBDAO {

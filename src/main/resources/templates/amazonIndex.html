@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>MVC_CRUD - Spring Boot With Elastic Search</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+th, td {
+	padding: 10px;
+}
+</style>
+</head>
+<h2>External DB Mirroring - Employee Information</h2>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>EmployeeId</th>
+				<th>EmployeeName</th>
+				<th>Salary</th>
+				<th>Language</th>
+				<th>Department</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="employee : ${employees}">
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.empName}"></td>
+				<td th:text="${employee.salary}"></td>
+				<td th:text="${employee.language}"></td>
+				<td th:text="${employee.department}"></td>
+				<td><a th:href="@{/api/amazon/employee/edit(empId=${employee.empId})}">view</a></td>
+				<td><a th:href="@{/api/amazon/employee/delete(empId=${employee.empId})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<div  th:if="${employee != null}">
+         <h2>Edit Employee Information</h2> <a th:href="@{/elasticIndex}">Create New Employee</a>
+		 <form action="#" th:action="@{/api/amazon/employee/add}" method="POST" th:object="${employee}">
+			EmployeeId <input type="text" id="empId" name="empId" th:value="${employee.empId}" readonly="readonly" /><br />
+			EmpName <input type="text" id="empName" name="empName" th:value="${employee.empName}"/><br />
+			Salary <input type="text" id="salary" name="salary" th:value="${employee.salary}"/><br />
+			Language <input type="text" id="language" name="language" th:value="${employee.language}"/><br />
+			Department <input type="text" id="department" name="department" th:value="${employee.department}"/><br />
+			<input type="submit" />
+		</form>
+	</div>
+	<div th:if="${employee == null}">
+	   <h2>Create New Employee</h2>
+	   <form action="#" th:action="@{/api/amazon/employee/add}" method="POST" th:object="${employee}">
+			EmployeeId <input type="text" id="empId" name="empId" /><br />
+			EmpName <input type="text" id="empName" name="empName" /><br />
+			Salary <input type="text" id="salary" name="salary" /><br />
+			Language <input type="text" id="language" name="language" /><br />
+			Department <input type="text" id="department" name="department" /><br />
+			<input type="submit" />
+		</form>
+	</div>
+	<h2>Search for Employees</h2>
+	<form action="#" th:action="@{/api/amazon/employee/search}" th:object="${employeeSearch}"
+		method="POST">
+		<input type="text" name="search" id="search"
+			th:value="${employeeSearch}" /> <input type="submit" value="Search" />
+	</form>
+
+</body>
+</html>
