@@ -19,7 +19,7 @@ public class EmployeeDBController {
 	private EmployeeDBDAO employeeDao;
 	
 	@RequestMapping("/dbIndex")
-	public ModelAndView jpaHome(Model model) {
+	public ModelAndView dbHome(Model model) {
 		try {
 			model.addAttribute("employees", employeeDao.getEmployees());
 		} catch (Exception e) {
@@ -29,17 +29,19 @@ public class EmployeeDBController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/api/db/employee/add")
-	public ModelAndView addJpaEmployee(@ModelAttribute Employee employee) throws Exception {
+	public ModelAndView addEmployee(@ModelAttribute Employee employee) throws Exception {
+		System.out.println("Came to this method");
 		try {
 			employeeDao.addEmployee(employee);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new ModelAndView("redirect:/error");
 		}
 		return new ModelAndView("redirect:/dbIndex");
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/api/db/employee/delete")
-	public ModelAndView deleteJpaEmployee(int empId) throws Exception {
+	public ModelAndView deleteEmployee(int empId) throws Exception {
 		try {
 			employeeDao.deleteEmployee(empId);
 		} catch (Exception e) {
@@ -49,10 +51,10 @@ public class EmployeeDBController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/api/db/employee/edit")
-	public String editJpaEmployee(Model model, int employeeId) throws Exception {
+	public String editEmployee(Model model, int empId) throws Exception {
 		Employee employeeObj = null;
 		try {
-			employeeObj = employeeDao.editEmployee(employeeId);
+			employeeObj = employeeDao.editEmployee(empId);
 			model.addAttribute("employees", employeeDao.getEmployees());
 			model.addAttribute("employee", employeeObj);
 		} catch (Exception e) {
@@ -61,8 +63,8 @@ public class EmployeeDBController {
 		return "dbIndex";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/api/jpa/employee/search")
-	public String getJpaEmployee(Model model, @RequestParam String search) {
+	@RequestMapping(method = RequestMethod.POST, value = "/api/db/employee/search")
+	public String getEmployee(Model model, @RequestParam String search) {
 		try {
 			model.addAttribute("employees", employeeDao.getEmployee(search));
 		} catch (Exception e) {

@@ -3,20 +3,22 @@ package com.springes.demo.mysql.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Employee {
 	
-	private int empId;
-	private String empName;
-	private double salary;
-	private String languge;
-	private int department;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int empId;
+	private String empName;
+	private double salary;
+	private String language;
+	private int department;
+	
+	
 	public int getEmpId() {
 		return empId;
 	}
@@ -35,11 +37,12 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public String getLanguge() {
-		return languge;
+	
+	public String getLanguage() {
+		return language;
 	}
-	public void setLanguge(String languge) {
-		this.languge = languge;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 	public int getDepartment() {
 		return department;

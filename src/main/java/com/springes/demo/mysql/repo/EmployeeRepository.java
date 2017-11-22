@@ -8,7 +8,7 @@ import com.springes.demo.mysql.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	
-	List<Employee> findByEmpNameContainingOrLanguageContainingOrDepartmentContainingOrderByEmployeeIdAsc(String name, String language, String department);
+	List<Employee> findByEmpNameContainingOrLanguageContainingOrDepartmentContainingOrderByEmpIdAsc(String name, String language, String department);
 
 	Employee findByEmpId(int empId);
 }

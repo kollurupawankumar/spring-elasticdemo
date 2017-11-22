@@ -13,7 +13,7 @@ th, td {
 }
 </style>
 </head>
-<h2>Jpa - Employee Information</h2>
+<h2>Employee Information</h2>
 <body>
 	<table>
 		<thead>
@@ -34,8 +34,8 @@ th, td {
 				<td th:text="${employee.salary}"></td>
 				<td th:text="${employee.language}"></td>
 				<td th:text="${employee.department}"></td>
-				<td><a th:href="@{/api/db/employee/edit(employeeId=${employee.employeeId})}">Edit</a></td>
-				<td><a th:href="@{/api/db/employee/delete(employeeId=${employee.employeeId})}">Delete</a></td>
+				<td><a th:href="@{/api/db/employee/edit(empId=${employee.empId})}">Edit</a></td>
+				<td><a th:href="@{/api/db/employee/delete(empId=${employee.empId})}">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -53,10 +53,10 @@ th, td {
 	</div>
 	<div th:if="${employee == null}">
 	   <h2>Create New Employee</h2>
-	   <form action="#" th:action="@{/api/db/employee/add}" method="POST" th:object="${employee}">
+	   <form action="#" th:action="@{/api/db/employee/add}" th:method="@{POST}" th:object="${employee}">
 <!-- 			EmployeeId <input type="text" id="employeeId" name="employeeId" /><br /> -->
-			FirstName <input type="text" id="empName" name="empName" /><br />
-			LastName <input type="text" id="salary" name="salary" /><br />
+			EmployeeName <input type="text" id="empName" name="empName" /><br />
+			Salary <input type="text" id="salary" name="salary" /><br />
 			Language <input type="text" id="language" name="language" /><br />
 			Department <input type="text" id="department" name="department" /><br />
 			<input type="submit" />

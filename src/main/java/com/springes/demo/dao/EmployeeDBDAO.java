@@ -17,6 +17,7 @@ public class EmployeeDBDAO {
 	public Employee addEmployee(Employee employee) throws Exception {
 		Employee employeeObj = null;
 		try {
+			
 			employeeObj = repository.save(employee);
 		} catch (Exception e) {
 		}
@@ -36,7 +37,7 @@ public class EmployeeDBDAO {
 		List<Employee> employeeObj = null;
 		try {
 			employeeObj = repository
-					.findByEmpNameContainingOrLanguageContainingOrDepartmentContainingOrderByEmployeeIdAsc(search,
+					.findByEmpNameContainingOrLanguageContainingOrDepartmentContainingOrderByEmpIdAsc(search,
 							search, search);
 		} catch (Exception e) {
 		}
