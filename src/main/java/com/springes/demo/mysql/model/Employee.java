@@ -16,7 +16,7 @@ public class Employee {
 	private String empName;
 	private double salary;
 	private String language;
-	private int department;
+	private String department;
 	
 	
 	public int getEmpId() {
@@ -44,10 +44,10 @@ public class Employee {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	public int getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
-	public void setDepartment(int department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 	

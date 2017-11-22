@@ -40,6 +40,7 @@ public class EmployeeDBDAO {
 					.findByEmpNameContainingOrLanguageContainingOrDepartmentContainingOrderByEmpIdAsc(search,
 							search, search);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return employeeObj;
 	}

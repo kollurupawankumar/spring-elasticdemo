@@ -65,6 +65,8 @@ public class EmployeeDBController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/api/db/employee/search")
 	public String getEmployee(Model model, @RequestParam String search) {
+		System.out.println("came here ");
+		System.out.println(search +":pawan");
 		try {
 			model.addAttribute("employees", employeeDao.getEmployee(search));
 		} catch (Exception e) {
